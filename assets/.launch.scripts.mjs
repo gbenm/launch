@@ -31,7 +31,8 @@ export default ({ cmd }) => ({
   describeArgs: {
     cmd: ({ args }) => [
       `echo "count: ${args.length}"`,
-      ...args.map((arg, i) => `echo "${i + 1}. ${arg}"`)
+      ...args.map((arg, i) => `echo "${i + 1}. ${arg}"`),
+      'echo input: '
     ],
     desc: "Describes the arguments of command"
   },
