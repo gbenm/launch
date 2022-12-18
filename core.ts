@@ -4,9 +4,9 @@ import { spawn } from "std/node/child_process.ts"
 import { buildCommand, showAllCommands, showTheMostSimilarCommand } from "./helpers.ts"
 
 export function launch ({
-  config, scripts, initialScriptsFileContent
+  config, scripts
 }: {
-  config: Config, scripts: Scripts, initialScriptsFileContent: string
+  config: Config, scripts: Scripts
 }) {
   const [command] = Deno.args
 

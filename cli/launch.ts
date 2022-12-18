@@ -11,7 +11,7 @@ async function main (config: Config) {
   const { default: getScripts }: ScriptsModule = await import(moduleFile)
   const scripts = getScripts({ cmd: cmdBuild })
 
-  launch({ config, scripts, initialScriptsFileContent })
+  launch({ config, scripts })
 }
 
 
