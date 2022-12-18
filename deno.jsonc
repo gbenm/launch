@@ -2,6 +2,7 @@
   "importMap": "import_map.json",
   "tasks": {
     "bundleScriptsFile": "deno run --allow-all scripts/bundleScriptsFile.ts",
-    "version": "deno run --allow-all scripts/version.ts"
+    "version": "deno task bundle && deno run --allow-all scripts/version.ts",
+    "bundle": "deno bundle cli/main.ts cli/launch.ts"
   }
 }

@@ -2,7 +2,7 @@ import version from "../version.ts"
 
 if (Deno.args[0] === "commitVersionFile") {
   await Deno.run({
-    cmd: ["git", "add", "version.generated.ts"],
+    cmd: ["git", "add", "version.generated.ts", "cli/launch.ts"],
     stdout: "inherit",
   }).status()
 
