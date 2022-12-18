@@ -14,7 +14,7 @@ if (!homeDir) {
 
 export default {
   scriptsPath: homeDir,
-  scriptsFile: ".launch.scripts.ts",
+  scriptsFile: ".launch.scripts.mjs",
   commandSeparator: "&&",
   othersCommandsToShow: 3,
   envRegexp: new RegExp(`\\$(\\w+)${separatorsForRegex[SEP]}`, "g")
