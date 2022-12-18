@@ -1,4 +1,6 @@
-import { bundle } from "https://deno.land/x/buckets@v0.5.0/mod.ts";
+import { bundleSource } from "./helpers/bundleSource.ts";
 
-const content = await bundle("scripts/bundleScriptsFile/launchScriptsDynamicContent.ts")
-Deno.writeTextFileSync("cli/launchScriptsContent.ts", content)
+await bundleSource({
+  source: "scripts/buckets/initialScriptsBucket.ts",
+  destination: "cli/launchScriptsContent.ts"
+})
