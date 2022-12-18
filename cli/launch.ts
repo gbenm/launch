@@ -16780,7 +16780,7 @@ const __default6 = {
     othersCommandsToShow: 3,
     envRegexp: new RegExp(`\\$(\\w+)${separatorsForRegex[SEP]}`, "g")
 };
-const __default7 = "0.0.1";
+const __default7 = "0.0.3";
 function cmdBuild(parts, ...args) {
     return (context)=>parts.reduce((cmd, part, i)=>{
             cmd = cmd.concat(part);
