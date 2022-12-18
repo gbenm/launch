@@ -16780,7 +16780,7 @@ const __default6 = {
     othersCommandsToShow: 3,
     envRegexp: new RegExp(`\\$(\\w+)${separatorsForRegex[SEP]}`, "g")
 };
-const __default7 = "0.0.0";
+const __default7 = "0.0.1";
 function cmdBuild(parts, ...args) {
     return (context)=>parts.reduce((cmd, part, i)=>{
             cmd = cmd.concat(part);
@@ -21406,7 +21406,7 @@ async function main(config) {
     await cliStatus();
     const moduleFile = scriptsFile(config);
     await createScriptsFileIfNotExists(moduleFile);
-    const { default: getScripts  } = await import(moduleFile);
+    const { default: getScripts  } = await import(`file://${moduleFile}`);
     const scripts = getScripts({
         cmd: cmdBuild
     });
