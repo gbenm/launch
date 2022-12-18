@@ -10,7 +10,7 @@ async function main (config: Config) {
   const moduleFile = scriptsFile(config)
   await createScriptsFileIfNotExists(moduleFile)
 
-  const { default: getScripts }: ScriptsModule = await import(moduleFile)
+  const { default: getScripts }: ScriptsModule = await import(`file://${moduleFile}`)
   const scripts = getScripts({ cmd: cmdBuild })
 
   launch({ config, scripts })
