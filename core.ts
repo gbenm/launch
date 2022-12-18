@@ -30,8 +30,6 @@ export function launch ({
   scheme.dir = scheme.dir.replace(config.envRegexp, replacer)
   scheme.dir = resolve(scheme.dir)
 
-  // const spawn = require('child_process').spawn
-
   let cmdToBuild = scheme.cmd
   let finalArgs = Deno.args.slice(1)
 
