@@ -6,6 +6,10 @@ await bundleSource({
 })
 
 await Deno.run({
+  cmd: ["deno", "task", "bundle"]
+}).status()
+
+await Deno.run({
   cmd: ["deno", "run", "--allow-all", "scripts/gitTag.ts", "commitVersionFile"],
   stdout: "inherit",
 }).status()
