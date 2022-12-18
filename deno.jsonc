@@ -1,0 +1,6 @@
+{
+  "importMap": "import_map.json",
+  "tasks": {
+    "bundleScriptsFile": "deno run --allow-all scripts/bundleScriptsFile.ts"
+  }
+}
