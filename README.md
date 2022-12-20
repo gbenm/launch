@@ -12,7 +12,7 @@ After [install](g)
 ## Install
 
 ```bash
-deno install --allow-all https://deno.land/x/launch/cli/launch.ts
+deno run -A https://deno.land/x/launch/install.ts
 ```
 
 # License
