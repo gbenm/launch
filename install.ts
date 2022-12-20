@@ -4,7 +4,7 @@ const process = Deno.run({
   cmd: [
     Deno.execPath(),
     "install",
-    "--import-map=import_map.json",
+    "--import-map=".concat(import.meta.resolve("./import_map.json")),
     "-Af",
     "--name=launch",
     import.meta.resolve("./cli/main.ts")
