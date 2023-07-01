@@ -9,4 +9,5 @@ await bundleSource({
 executeSync("deno", {
   args: ["run", "--allow-all", "scripts/gitTag.ts", "commitVersionFile"],
   stdout: "inherit",
+  stderr: "inherit",
 })
