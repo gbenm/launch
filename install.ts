@@ -1,8 +1,7 @@
 import { brightGreen } from "https://deno.land/std@0.168.0/fmt/colors.ts"
 
-const process = Deno.run({
-  cmd: [
-    Deno.execPath(),
+const installCommand = new Deno.Command(Deno.execPath(), {
+  args: [
     "install",
     "--import-map=".concat(import.meta.resolve("./import_map.json")),
     "-Af",
@@ -11,9 +10,9 @@ const process = Deno.run({
   ]
 })
 
-const status = await process.status()
+const process = installCommand.spawn()
 
-process.close()
+const status = await process.status
 
 if (!status.success) {
   console.log("Failed to install launch")

@@ -1,4 +1,4 @@
-import { homedir } from "std/node/os.ts"
+import { homedir } from "node:os"
 import { SEP } from "std/path/separator.ts"
 
 const separatorsForRegex = {

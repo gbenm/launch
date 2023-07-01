@@ -1,3 +1,4 @@
+import { executeSync } from "../helpers/execute.ts";
 import { bundleSource } from "./helpers/bundleSource.ts";
 
 await bundleSource({
@@ -5,7 +6,7 @@ await bundleSource({
   destination: "version.generated.ts"
 })
 
-await Deno.run({
-  cmd: ["deno", "run", "--allow-all", "scripts/gitTag.ts", "commitVersionFile"],
+executeSync("deno", {
+  args: ["run", "--allow-all", "scripts/gitTag.ts", "commitVersionFile"],
   stdout: "inherit",
-}).status()
+})

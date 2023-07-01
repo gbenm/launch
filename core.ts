@@ -1,6 +1,6 @@
 import { Config, Scripts } from "./interfaces.ts"
 import { SEP, resolve } from "std/path/mod.ts"
-import { spawn } from "std/node/child_process.ts"
+import { spawn } from "node:child_process"
 import { buildCommand, showAllCommands, showTheMostSimilarCommand } from "./helpers.ts"
 
 export function launch ({
