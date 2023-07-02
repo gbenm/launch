@@ -1,5 +1,6 @@
 import { homedir } from "node:os"
 import { SEP } from "std/path/separator.ts"
+import { Config } from "../interfaces.ts"
 
 const separatorsForRegex = {
   "/": "\\/",
@@ -12,10 +13,11 @@ if (!homeDir) {
   throw new Error("Home directory not found")
 }
 
-export default {
+export default <Config> {
   scriptsPath: homeDir,
   scriptsFile: ".launch.scripts.mjs",
   commandSeparator: "&&",
   othersCommandsToShow: 3,
-  envRegexp: new RegExp(`\\$(\\w+)${separatorsForRegex[SEP]}`, "g")
+  envRegexp: new RegExp(`\\$(\\w+)${separatorsForRegex[SEP]}`, "g"),
+  checkVersionTimeoutInMs: 1000,
 }

@@ -1,6 +1,21 @@
 // @ts-check
-import { homedir } from "https://deno.land/std@0.168.0/node/os.ts"
-import { createHash } from "https://deno.land/std@0.168.0/node/crypto.ts"
+import { homedir } from "node:os"
+import { createHash } from "node:crypto"
+
+/**
+ * @typedef {object} LaunchConfig
+ * @property {string} commandSeparator
+ * @property {number} othersCommandsToShow
+ * @property {RegExp} envRegexp
+ * @property {number} checkVersionTimeoutInMs
+ */
+
+/** @type {Partial<LaunchConfig>} */
+export const config = {
+  commandSeparator: "&&",
+  othersCommandsToShow: 3,
+  checkVersionTimeoutInMs: 1000,
+}
 
 /**
  * @typedef {{ path: string }} Context

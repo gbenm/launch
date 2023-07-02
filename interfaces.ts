@@ -4,10 +4,14 @@ export interface Config {
   commandSeparator: string
   othersCommandsToShow: number
   envRegexp: RegExp
+  checkVersionTimeoutInMs: number
 }
+
+export type LaunchConfig = Partial<Omit<Config, "scriptsPath" | "scriptsFile">>
 
 export interface ScriptsModule {
   default: (helpers: Helpers) => Scripts
+  config: LaunchConfig
 }
 
 export interface Helpers {

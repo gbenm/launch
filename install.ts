@@ -1,4 +1,4 @@
-import { brightGreen } from "https://deno.land/std@0.168.0/fmt/colors.ts"
+import { brightGreen } from "https://deno.land/std@0.192.0/fmt/colors.ts"
 
 const installCommand = new Deno.Command(Deno.execPath(), {
   args: [
