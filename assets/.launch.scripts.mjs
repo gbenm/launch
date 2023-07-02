@@ -8,6 +8,7 @@ import { createHash } from "node:crypto"
  * @property {number} othersCommandsToShow
  * @property {RegExp} envRegexp
  * @property {number} checkVersionTimeoutInMs
+ * @property {number} checkVersionIntervalInSeconds
  */
 
 /** @type {Partial<LaunchConfig>} */
@@ -15,6 +16,7 @@ export const config = {
   commandSeparator: "&&",
   othersCommandsToShow: 3,
   checkVersionTimeoutInMs: 1000,
+  checkVersionIntervalInSeconds: 12 * 60 * 60,
 }
 
 /**

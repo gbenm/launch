@@ -5,6 +5,7 @@ export interface Config {
   othersCommandsToShow: number
   envRegexp: RegExp
   checkVersionTimeoutInMs: number
+  checkVersionIntervalInSeconds: number
 }
 
 export type LaunchConfig = Partial<Omit<Config, "scriptsPath" | "scriptsFile">>

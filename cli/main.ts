@@ -5,6 +5,7 @@ import { Config, ScriptsModule } from "../interfaces.ts"
 import { cmdBuild, exists, scriptsFile } from "../helpers.ts"
 import { launch } from "../core.ts"
 import { bold, brightGreen, yellow } from "std/fmt/colors.ts"
+import storage from "../helpers/storage.ts"
 
 async function main (defaultConfig: Config) {
   const moduleFile = scriptsFile(defaultConfig)
@@ -13,8 +14,14 @@ async function main (defaultConfig: Config) {
   const { default: getScripts, config: launchConfig }: ScriptsModule = await import(`file://${moduleFile}`)
 
   const config = {...defaultConfig, ...launchConfig}
+
   try {
-    await cliStatus(config.checkVersionTimeoutInMs)
+    const checkVersion = storage.getSecondsSinceLastVersionCheck() > config.checkVersionIntervalInSeconds
+    if (checkVersion) {
+      console.log("Checking for updates...\n")
+      await cliStatus(config.checkVersionTimeoutInMs)
+      storage.setLastStatusCheckTimestamp(Date.now())
+    }
   } catch {
     console.log(yellow("[warning]:"), "Failed to check for updates\n")
   }

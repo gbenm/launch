@@ -1,7 +1,9 @@
+import version from "./version.ts"
+
 import { Config, Scripts } from "./interfaces.ts"
 import { SEP, resolve } from "std/path/mod.ts"
 import { spawn } from "node:child_process"
-import { buildCommand, showAllCommands, showTheMostSimilarCommand } from "./helpers.ts"
+import { buildCommand, showAllCommands, showCliHelp, showShortCliHelp, showTheMostSimilarCommand } from "./helpers.ts"
 
 export function launch ({
   config, scripts
@@ -11,6 +13,18 @@ export function launch ({
   const [command] = Deno.args
 
   if (!command) {
+    showShortCliHelp()
+    showAllCommands(config, scripts)
+    return
+  }
+
+  if (["-v", "--version"].includes(command)) {
+    console.log(version)
+    return
+  }
+
+  if (["-h", "--help"].includes(command)) {
+    showCliHelp(config)
     showAllCommands(config, scripts)
     return
   }

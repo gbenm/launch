@@ -1,5 +1,8 @@
+import version from "./version.ts"
+
 import { join } from "std/path/mod.ts"
 import { Context, Script, Config, CmdArg } from "./interfaces.ts"
+import { bold, green } from "https://deno.land/std@0.192.0/fmt/colors.ts"
 
 export function cmdBuild (parts: TemplateStringsArray, ...args: CmdArg[]) {
   return (context: Context) => parts.reduce((cmd, part, i) => {
@@ -14,6 +17,36 @@ export function cmdBuild (parts: TemplateStringsArray, ...args: CmdArg[]) {
     }
     return cmd
   }, "")
+}
+
+export function showShortCliHelp() {
+  showCliHeader()
+  console.log()
+  console.log("Show help:")
+  console.log("  launch -h")
+  console.log()
+}
+
+export function showCliHelp(config: Config) {
+  showCliHeader()
+  console.log()
+  console.log("Usage:")
+  console.log("  launch <command> [args...]")
+  console.log("  launch -h")
+  console.log("  launch -v")
+  console.log()
+  console.log("Options:")
+  console.log("  -h, --help     Show this help")
+  console.log("  -v, --version  Show version number")
+  console.log()
+  console.log("Config:")
+  console.log(`  You can configure launch cli by editing ${bold('config')} constant in`, scriptsFile(config))
+  console.log("  See", bold(`https://deno.land/x/launch@${version}#config`), "for more info")
+  console.log()
+}
+
+export function showCliHeader() {
+  console.log(bold("Launch CLI"), green(`v${version}`))
 }
 
 export function showAllCommands(config: Config, commands: Record<string, Pick<Script, "desc">>) {
