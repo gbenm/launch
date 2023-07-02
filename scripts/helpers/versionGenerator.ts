@@ -1,15 +1,14 @@
-import { increment } from "https://deno.land/std@0.168.0/semver/mod.ts"
+import { ReleaseType, SemVer, format, increment, parse } from "std/semver/mod.ts"
 import currentVersion from "../../version.ts"
 
-export function generateContentVersionFile () {
-  const [ kind ] = Deno.args
+export function generateVersion (kind: ReleaseType): string {
+  let version: SemVer | null
 
-  let version: string | null
   switch (kind) {
     case "major":
     case "minor":
     case "patch":
-      version = increment(currentVersion, kind)
+      version = increment(parse(currentVersion), kind)
       break
     default:
       throw new Error("Unsupported kind of version")
@@ -19,5 +18,5 @@ export function generateContentVersionFile () {
     throw new Error("Version not found")
   }
 
-  return version
+  return format(version)
 }
