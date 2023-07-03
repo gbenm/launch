@@ -7,7 +7,7 @@ const newVersion = generateVersion(releaseType)
 Deno.writeTextFileSync("version.generated.ts", `export default "${newVersion}"`)
 
 executeSync("deno", {
-  args: ["run", "--config", "../deno.jsonc", "-A", "scripts/gitTag.ts", "commitVersionFile"],
+  args: ["run", "--config", "deno.jsonc", "-A", "scripts/gitTag.ts", "commitVersionFile"],
   stdout: "inherit",
   stderr: "inherit",
 })
