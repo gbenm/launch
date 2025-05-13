@@ -6,6 +6,7 @@ const installCommand = new Deno.Command(Deno.execPath(), {
     "--import-map=".concat(import.meta.resolve("./import_map.json")),
     "-Af",
     "--name=launch",
+    "--global",
     import.meta.resolve("./cli/main.ts")
   ]
 })

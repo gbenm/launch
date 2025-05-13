@@ -1,6 +1,7 @@
 {
-  "version": "2",
+  "version": "5",
   "remote": {
+    "https://deno.land/std@0.192.0/fmt/colors.ts": "d67e3cd9f472535241a8e410d33423980bec45047e343577554d3356e1f0ef4e",
     "https://deno.land/std@0.192.0/semver/_shared.ts": "7101b4118e96b8c7b600d54a8455d93afd96eaf43a69a3bff34513890ac264ae",
     "https://deno.land/std@0.192.0/semver/cmp.ts": "4faca58ad459a8c7663ac84ed8410fb5cf932042969f5c25d285f319456d55c1",
     "https://deno.land/std@0.192.0/semver/comparator_format.ts": "329e05d914c064590ded4801fc601bf1c5d0f461c5524b1578e10f180551ef6f",
