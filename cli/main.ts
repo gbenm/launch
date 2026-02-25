@@ -5,6 +5,7 @@ import { Config, ScriptsModule } from "../interfaces.ts"
 import { cmdBuild, exists, scriptsFile } from "../helpers.ts"
 import { launch } from "../core.ts"
 import { bold, brightGreen, yellow } from "std/fmt/colors.ts"
+import { gt, valid } from "std/semver/mod.ts"
 import storage from "../helpers/storage.ts"
 
 async function main (defaultConfig: Config) {
@@ -51,7 +52,14 @@ async function cliStatus (requestTimeout: number) {
 
   const { tag_name } = await jsonResponse.json()
 
-  if (tag_name !== version) {
+  const normalize = (v: string | undefined) => v?.startsWith("v") ? v.slice(1) : v
+  const latestVersion = normalize(tag_name)
+  const currentVersion = normalize(version)
+
+  const latestIsValid = latestVersion && valid(latestVersion)
+  const currentIsValid = currentVersion && valid(currentVersion)
+
+  if (latestIsValid && currentIsValid && gt(latestVersion!, currentVersion!)) {
     console.log(bold(yellow("<<")), bold("There is a new version of launch available:"), bold(brightGreen(tag_name)), bold(yellow(">>")), "\n")
     console.log("You can update by running the following command:\n")
     console.log(`\tdeno run -A https://deno.land/x/launch@${tag_name}/install.ts\n`)
